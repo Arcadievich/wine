@@ -1,7 +1,6 @@
 import datetime
 import pandas
 import argparse
-from pprint import pprint
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -17,7 +16,9 @@ def get_year_word(number):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description='Генерирование страницы сайта с подгрузкой информации из xlsx-файла',
+    )
     parser.add_argument(
         '--path',
         '-p',
@@ -38,7 +39,7 @@ def main():
 
     date_of_creation = datetime.datetime(year=1920,month=1,day=1)
     now = datetime.datetime.now()
-    age = (now - date_of_creation).days // 365
+    age = now.year - date_of_creation.year
     declension = get_year_word(age)
     age_text = f'Уже {age} {declension} с вами'
 
