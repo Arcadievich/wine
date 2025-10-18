@@ -37,9 +37,8 @@ def main():
 
     template = env.get_template('template.html')
 
-    date_of_creation = datetime.datetime(year=1920,month=1,day=1)
-    now = datetime.datetime.now()
-    age = now.year - date_of_creation.year
+    date_of_creation = 1920
+    age = datetime.datetime.now().year - date_of_creation
     declension = get_year_word(age)
     age_text = f'Уже {age} {declension} с вами'
 
